@@ -14,15 +14,15 @@ app.use(bodyParser.json());
 
 
 app.get("/", (req, res) => {
-  res.send("home page")
+  res.end("home page")
 });
 
 app.get("/about", (req, res) => {
-  res.send("about page");
+  res.end("about page");
 });
 
 app.get("/contact", (req, res) => {
-  res.send("contact page");
+  res.end("contact page");
 })
 
 app.listen(port, () => {
