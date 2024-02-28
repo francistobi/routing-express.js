@@ -1,15 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const bookRouter = require("./routes/books");
+const bookRoute = require("./routes/books");
 const authorRoute = require("./routes/authors");
 
 const port = 9000;
 const app = express();
 
-app.use("book", bookRouter)
+app.use("book", bookRoute);
 app.use("/author", authorRoute);
 
-app.use(express.static("public"));
+
 app.use(bodyParser.json());
 
 
