@@ -33,7 +33,7 @@ bookRoute.get("/:id", (req, res) => {
   const book = books.find((book) => book.id === id);
 
   if (!book) {
-    res.status(404).send("page not found");
+    res.status(404).end("page not found");
   }
   res.json(book);
 });
@@ -50,7 +50,7 @@ bookRoute.put("/:id", (req, res) => {
   const bookIndex = books.findIndex((book) => book.id == id);
 
   if (bookIndex == -1) {
-    req.status(404).send("book not found");
+    req.status(404).end("book not found");
   }
   books[bookIndex] = book;
   res.json(books);
@@ -61,7 +61,7 @@ bookRoute.delete("/:id", (req, res) => {
   const index = books.findIndex((book) => book.id == id);
 
   if (index == -1) {
-    res.status(404).send("page not found");
+    res.status(404).end("page not found");
   }
   books.splice(index, 1);
   res.json(books);

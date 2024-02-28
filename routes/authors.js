@@ -29,7 +29,7 @@ authorRoute.get("/:id", (req, res) => {
   const author = authors.find((author) => author.id === id);
 
   if (!author) {
-    res.status(404).send("page not found");
+    res.status(404).end("page not found");
   }
   res.json(author);
 });
@@ -46,7 +46,7 @@ authorRoute.put("/:id", (req, res) => {
   const index = authors.findIndex((author) => author.id === id);
 
   if (!index == -1) {
-    res.status(404).send("file not found");
+    res.status(404).end("file not found");
   }
   authors[index] = author;
 });
@@ -56,7 +56,7 @@ authorRoute.delete("/:id", (req, res) => {
   const index = authors.findIndex((author) => author.id == id);
 
   if (index == -1) {
-    res.status(404).send("page not found");
+    res.status(404).end("page not found");
   }
   authors.splice(index, 1);
   res.json(authors);
