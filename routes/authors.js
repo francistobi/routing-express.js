@@ -30,7 +30,7 @@ authorRoute.get("/:id", (req, res) => {
 
   if (!author) {
     res.status(404).end("page not found");
-  }else{
+  } else {
     res.json(author);
   }
 });
@@ -48,7 +48,7 @@ authorRoute.put("/:id", (req, res) => {
 
   if (!index == -1) {
     res.status(404).end("file not found");
-  }else{
+  } else {
     authors[index] = author;
   }
 });
@@ -59,12 +59,10 @@ authorRoute.delete("/:id", (req, res) => {
 
   if (index == -1) {
     res.status(404).end("page not found");
-  }else{
+  } else {
     authors.splice(index, 1);
     res.json(authors);
   }
 });
 
-module.exports = {
-  authorRoute,
-};
+module.exports = authorRoute;
