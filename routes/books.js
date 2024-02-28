@@ -30,7 +30,7 @@ bookRoute.get("/", (req, res) => {
 
 bookRoute.get("/:id", (req, res) => {
   const id = req.params.id;
-  const book = books.find((book) => book.id === id);
+  const book = books.find((book) => book.id === parseInt(id));
 
   if (!book) {
     res.status(404).end("page not found");
@@ -47,7 +47,7 @@ bookRoute.post("/", (req, res) => {
 bookRoute.put("/:id", (req, res) => {
   const id = req.params;
   const book = req.body;
-  const bookIndex = books.findIndex((book) => book.id == id);
+  const bookIndex = books.findIndex((book) => book.id == parseInt(id));
 
   if (bookIndex == -1) {
     req.status(404).end("book not found");
@@ -58,7 +58,7 @@ bookRoute.put("/:id", (req, res) => {
 
 bookRoute.delete("/:id", (req, res) => {
   const id = req.params;
-  const index = books.findIndex((book) => book.id == id);
+  const index = books.findIndex((book) => book.id == parseInt(id));
 
   if (index == -1) {
     res.status(404).end("page not found");

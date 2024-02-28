@@ -26,12 +26,13 @@ authorRoute.get("/", (req, res) => {
 
 authorRoute.get("/:id", (req, res) => {
   const id = req.params;
-  const author = authors.find((author) => author.id === id);
+  const author = authors.find((author) => author.id === parseInt(id));
 
   if (!author) {
     res.status(404).end("page not found");
+  }else{
+    res.json(author);
   }
-  res.json(author);
 });
 
 authorRoute.post("/", (req, res) => {
@@ -43,23 +44,25 @@ authorRoute.post("/", (req, res) => {
 authorRoute.put("/:id", (req, res) => {
   const id = req.params;
   const author = req.body;
-  const index = authors.findIndex((author) => author.id === id);
+  const index = authors.findIndex((author) => author.id === parseInt(id));
 
   if (!index == -1) {
     res.status(404).end("file not found");
+  }else{
+    authors[index] = author;
   }
-  authors[index] = author;
 });
 
 authorRoute.delete("/:id", (req, res) => {
   const id = req.params;
-  const index = authors.findIndex((author) => author.id == id);
+  const index = authors.findIndex((author) => author.id == parseInt(id));
 
   if (index == -1) {
     res.status(404).end("page not found");
+  }else{
+    authors.splice(index, 1);
+    res.json(authors);
   }
-  authors.splice(index, 1);
-  res.json(authors);
 });
 
 module.exports = {

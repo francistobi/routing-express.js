@@ -6,11 +6,10 @@ const authorRoute = require("./routes/authors");
 const port = 4000;
 const app = express();
 
-// app.use("/book", bookRoute);
-// app.use("/author", authorRoute);
-
-
 app.use(bodyParser.json());
+
+app.use("/book", bookRoute);
+app.use("/author", authorRoute);
 
 
 app.get("/", (req, res) => {
